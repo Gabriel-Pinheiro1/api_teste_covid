@@ -40,7 +40,7 @@ class UpdatePacienteRequest extends FormRequest
 
             'telefone' => [
                 'nullable',
-                'telefone_com_ddd',
+                'celular_com_ddd',
                 Rule::unique('pacientes')->ignore($id)
                 
             ],

@@ -30,12 +30,14 @@ class StorePacienteRequest extends FormRequest
 
             'cpf' => [
                 'required',
-                'unique:pacientes,cpf'
+                'unique:pacientes,cpf',
+                'cpf',
+                'formato-cpf'
             ],
 
             'telefone' => [
                 'required',
-                'telefone_com_ddd',
+                'celular_com_ddd',
                 'unique:pacientes,telefone'
             ],
 
