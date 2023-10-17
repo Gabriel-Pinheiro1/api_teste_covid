@@ -10,12 +10,17 @@ use App\Models\Paciente;
 
 class PacienteController extends Controller
 {
+    protected $paciente;
+    public function __construct(Paciente $paciente)
+    {
+        $this->paciente = $paciente;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Paciente $pacientes)
     {
-        $pacientes = Paciente::all();
+        $pacientes = $this->paciente->all();
         return PacienteResource::collection($pacientes);
     }
 
@@ -27,7 +32,7 @@ class PacienteController extends Controller
     {
         $data = $request->validated();
         $data['imagem'] = $request->file('imagem')->store('imagem', 'public');
-        $paciente = Paciente::create($data);
+        $paciente = $this->paciente->create($data);
         return new PacienteResource($paciente);
     }
 
@@ -36,7 +41,7 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente = Paciente::find($id);
+        $paciente = $this->paciente->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
         } 
@@ -50,7 +55,7 @@ class PacienteController extends Controller
     public function update(UpdatePacienteRequest $request, $id)
     {
         
-        $paciente = Paciente::find($id);
+        $paciente = $this->paciente->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
         } 
@@ -70,7 +75,7 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        $paciente = Paciente::find($id);
+        $paciente = $this->paciente->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'], 404);
         }

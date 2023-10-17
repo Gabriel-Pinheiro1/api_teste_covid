@@ -16,4 +16,8 @@ class Paciente extends Model
         'condicao', 
         'data_nascimento'
     ];
+
+    public function atendimentos(){
+        return $this->hasMany(Atendimento::class);
+    }
 }
