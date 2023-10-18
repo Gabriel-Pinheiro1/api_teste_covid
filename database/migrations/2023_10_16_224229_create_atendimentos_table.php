@@ -15,7 +15,15 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('paciente_id');
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
+
+            $table->integer('fCardiaca');
+            $table->integer('fRespiratoria');
+            $table->integer('pressaoSis');
+            $table->integer('pressaoDis');
+            $table->float('temperatura');
+            
+
             $table->boolean('febre');
             $table->boolean('coriza');
             $table->boolean('nariz_entupido');
@@ -30,6 +38,7 @@ return new class extends Migration
             $table->boolean('falta_paladar');
             $table->boolean('falta_olfato');
             $table->boolean('diarreia');
+
             $table->string('condicao_atendimento')->nullable();
             
         });

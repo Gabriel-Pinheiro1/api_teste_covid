@@ -20,7 +20,7 @@ class AtendimentoController extends Controller
     public function index()
     {
         $atendimento = $this->atendimento->all();
-        return response()->json([$atendimento, 200]);
+        return response()->json([$atendimento],200);
     }
 
     /**
@@ -36,15 +36,18 @@ class AtendimentoController extends Controller
      */
     public function store(StoreAtendimentoRequest $request)
     {
-        //
+        $data = $request->all();
+        $atendimento = $this->atendimento->create($data);
+        return response()->json([$atendimento],201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Atendimento $atendimento)
+    public function show($id)
     {
-        //
+        $atendimento = $this->atendimento->with('paciente')->find($id);
+        return response()->json([$atendimento],200);
     }
 
     /**
@@ -52,22 +55,38 @@ class AtendimentoController extends Controller
      */
     public function edit(Atendimento $atendimento)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAtendimentoRequest $request, Atendimento $atendimento)
+    public function update(UpdateAtendimentoRequest $request,$id)
     {
-        //
+        $atendimento = $this->atendimento->find($id);
+        if(!$atendimento){
+            return response()->json(['ERRO'=> 'ATENDIMENTO NÃO ENCONTRADO '], 404);
+        } else{
+            $data = $request->validated();
+            $atendimento->update($data);
+            return response()->json([$atendimento], 200);
+        }
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Atendimento $atendimento)
+    public function destroy($id)
     {
-        //
+        $atendimento = $this->atendimento->find($id);
+        if(!$atendimento){
+            return response()->json(['ERRO'=> 'ATENDIMENTO NÃO ENCONTRADO '], 404);
+        } else{
+            
+            $atendimento->delete();
+            return response()->json(['SUCESSO' => 'ATENDIMENTO EXCLUIDO COM SUCESSO' ],200);
+        }
+        
     }
 }

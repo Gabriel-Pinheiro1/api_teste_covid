@@ -10,6 +10,14 @@ class Atendimento extends Model
     use HasFactory;
     protected $fillable = [
         'paciente_id',
+
+
+        'fCardiaca',
+        'fRespiratoria',
+        'pressaoSis',
+        'pressaoDis',
+        'temperatura',
+            
         'febre',
         'coriza',
         'nariz_entupido',

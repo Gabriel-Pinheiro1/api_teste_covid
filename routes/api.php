@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AtendimentoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
+use App\Models\Atendimento;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/', function () {
-    return 'oi';
+    return '';
 });
+
 Route::apiResource('pacientes', PacienteController::class);
+Route::apiResource('atendimentos', AtendimentoController::class);

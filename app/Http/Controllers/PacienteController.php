@@ -41,11 +41,11 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente = $this->paciente->find($id);
+        $paciente = $this->paciente->with('atendimentos')->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
         } 
-        return new PacienteResource($paciente);
+        return response()->json([$paciente],200);
     }
 
     
@@ -55,7 +55,7 @@ class PacienteController extends Controller
     public function update(UpdatePacienteRequest $request, $id)
     {
         
-        $paciente = $this->paciente->find($id);
+        $paciente = $this->paciente->with('atendimentos')->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
         } 
@@ -63,7 +63,10 @@ class PacienteController extends Controller
             Storage::disk('public')->delete($paciente->imagem);
         }
         $data = $request->validated();
-        $data['imagem'] = $request->file('imagem')->store('imagem', 'public');
+        if(array_key_exists('imagem', $data)){
+            $data['imagem'] = $request->file('imagem')->store('imagem', 'public');
+        }
+      
         $paciente->update($data);
         return new PacienteResource($paciente);
         
