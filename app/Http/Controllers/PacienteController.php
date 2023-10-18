@@ -55,7 +55,7 @@ class PacienteController extends Controller
     public function update(UpdatePacienteRequest $request, $id)
     {
         
-        $paciente = $this->paciente->with('atendimentos')->find($id);
+        $paciente = $this->paciente->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
         } 
