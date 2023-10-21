@@ -28,7 +28,8 @@ class UpdatePacienteRequest extends FormRequest
             'nome' => [
                 'nullable',
                 'min:3',
-                'max:200'
+                'max:200',
+                'regex:/^[a-zA-Z\s]+$/'
             ],
 
             'cpf' => [
