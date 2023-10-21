@@ -43,12 +43,13 @@ class StorePacienteRequest extends FormRequest
 
             'imagem' => [
                 'required',
-                'file',
-                'mimes:png,jpeg'
+                'image',
+                'mimes:png,jpeg, jpg'
             ],
 
             'data_nascimento' => [
-                'required'
+                'required',
+                'date'
             ],
 
             'condicao' => [

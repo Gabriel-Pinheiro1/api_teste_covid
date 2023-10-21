@@ -47,10 +47,13 @@ class UpdatePacienteRequest extends FormRequest
 
             'imagem' => [
                 'nullable',
+                'image',
+                'mimes: png, jpg, jpeg'
             ],
 
             'data_nascimento' => [
-                'nullable'
+                'nullable',
+                'date'
             ],
 
             'condicao' => [
