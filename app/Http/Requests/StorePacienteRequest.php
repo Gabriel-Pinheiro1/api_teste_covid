@@ -26,7 +26,7 @@ class StorePacienteRequest extends FormRequest
                 'required',
                 'min:3',
                 'max:200',
-                'regex:/^[a-zA-Z\s]+$/'
+                'regex:/^[\p{L}\s]+$/u'
             ],
 
             'cpf' => [
