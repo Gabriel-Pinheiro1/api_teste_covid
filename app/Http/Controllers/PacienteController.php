@@ -58,10 +58,12 @@ class PacienteController extends Controller
         $paciente = $this->paciente->find($id);
         if(!$paciente){
             return response()->json(['ERRO' => 'Usuário não encontrado'],404);
-        } 
+        }
+
         if($request->file('imagem')){
             Storage::disk('public')->delete($paciente->imagem);
         }
+        
         $data = $request->validated();
         if(array_key_exists('imagem', $data)){
             $data['imagem'] = $request->file('imagem')->store('imagem', 'public');
