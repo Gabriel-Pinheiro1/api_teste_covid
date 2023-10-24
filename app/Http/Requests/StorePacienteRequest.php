@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePacienteRequest extends FormRequest
 {
@@ -54,7 +55,8 @@ class StorePacienteRequest extends FormRequest
             ],
 
             'condicao' => [
-                'required'
+                'required',
+                Rule::in(['Não atendido', 'Potencial infectado', 'Possível infectado', 'Sintomas insuficientes']),
             ]
 
         ];

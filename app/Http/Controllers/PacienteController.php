@@ -21,7 +21,7 @@ class PacienteController extends Controller
     public function index(Paciente $pacientes)
     {
         $pacientes = $this->paciente->all();
-        return PacienteResource::collection($pacientes);
+        return response()->json([$pacientes],201);
     }
 
     
@@ -33,7 +33,7 @@ class PacienteController extends Controller
         $data = $request->validated();
         $data['imagem'] = $request->file('imagem')->store('imagem', 'public');
         $paciente = $this->paciente->create($data);
-        return new PacienteResource($paciente);
+        return response()->json([$paciente],200);
     }
 
     /**
@@ -68,7 +68,7 @@ class PacienteController extends Controller
         }
       
         $paciente->update($data);
-        return new PacienteResource($paciente);
+        return response()->json([$paciente],200);
         
         
     }

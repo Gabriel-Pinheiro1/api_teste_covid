@@ -58,7 +58,8 @@ class UpdatePacienteRequest extends FormRequest
             ],
 
             'condicao' => [
-                'nullable'
+                'nullable',
+                Rule::in(['Não atendido', 'Potencial infectado', 'Possível infectado', 'Sintomas insuficientes']),
             ]
         ];
     }

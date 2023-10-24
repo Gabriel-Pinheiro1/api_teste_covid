@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAtendimentoRequest extends FormRequest
+
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -94,31 +96,36 @@ class StoreAtendimentoRequest extends FormRequest
 
             'condicao_atendimento' => [
                 'required',
+                Rule::in(['Não atendido', 'Potencial infectado', 'Possível infectado', 'Sintomas insuficientes']),
                 
             ],
 
             'fCardiaca' => [
                 'required',
+                'not_in:0'
                 
             ],
 
             'fRespiratoria' => [
                 'required',
-                
+                'not_in:0'                
             ],
 
             'pressaoSis' => [
                 'required',
+                'not_in:0'
                 
             ],
 
             'pressaoDis' => [
                 'required',
+                'not_in:0'
                 
             ],
 
             'temperatura' => [
                 'required',
+                'not_in:0'
                 
             ],
         ];
