@@ -15,7 +15,7 @@ php artisan key:generate
 
 Faça a conexão com o banco de dados ( neste projeto foi utilizado o MySQL como banco, na porta 3306 e host localhost).
 
-E rode as migrations:
+Rode as migrations:
 ````
 php artisan migrate
 ````
