@@ -20,7 +20,7 @@ E rode as migrations:
 php artisan migrate
 ````
 
-Crie um link simbólico para a pasta criar uma referência da pasta "storage" na pasta "Public":
+Crie um link simbólico para criar uma referência da pasta "storage" na pasta "Public":
 
 ````
 php artisan storage:link
