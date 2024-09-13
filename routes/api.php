@@ -5,6 +5,7 @@ use App\Http\Controllers\NotaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\MedicoController;
 use App\Models\Atendimento;
 
 
@@ -29,3 +30,4 @@ Route::get('/', function () {
 Route::apiResource('pacientes', PacienteController::class);
 Route::apiResource('atendimentos', AtendimentoController::class);
 Route::apiResource('notas', NotaController::class);
+Route::apiResource('medicos', MedicoController::class);
