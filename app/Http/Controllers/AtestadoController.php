@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreAtestadoRequest;
 use App\Http\Requests\UpdateAtestadoRequest;
+use App\Models\Atestado;
 
 
 class AtestadoController extends Controller
 {
     protected $atestado;
 
-    public function __construct($atestado)
+    public function __construct(Atestado $atestado)
     {
-        $atestado = $this->atestado;
+         $this->atestado = $atestado ;
     }
 
-    
+
     public function index()
     {
       $atestado = $this->atestado->all(); 
