@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtendimentoController;
+use App\Http\Controllers\AtestadoController;
 use App\Http\Controllers\NotaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,4 @@ Route::apiResource('pacientes', PacienteController::class);
 Route::apiResource('atendimentos', AtendimentoController::class);
 Route::apiResource('notas', NotaController::class);
 Route::apiResource('medicos', MedicoController::class);
+Route::apiResource('atestados', AtestadoController::class);

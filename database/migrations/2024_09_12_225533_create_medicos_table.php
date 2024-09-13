@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('medicos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('crm')->unique(); // Registro do médico
+            $table->string('crm')->unique(); 
             $table->string('telefone')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamps();
