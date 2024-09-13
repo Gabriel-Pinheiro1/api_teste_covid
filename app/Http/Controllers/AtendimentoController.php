@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAtendimentoRequest;
 use App\Http\Requests\UpdateAtendimentoRequest;
 use App\Models\Atendimento;
 
+
 class AtendimentoController extends Controller
 {
     protected $atendimento;
@@ -89,4 +90,5 @@ class AtendimentoController extends Controller
         }
         
     }
+
 }

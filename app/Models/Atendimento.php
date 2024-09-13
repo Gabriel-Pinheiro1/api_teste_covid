@@ -40,4 +40,8 @@ class Atendimento extends Model
     public function paciente(){
         return $this->belongsTo(Paciente::class);
     }
+
+    public function notas(){
+        return $this->hasMany(Nota::class);
+    }
 }

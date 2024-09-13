@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtendimentoController;
+use App\Http\Controllers\NotaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
@@ -27,3 +28,4 @@ Route::get('/', function () {
 
 Route::apiResource('pacientes', PacienteController::class);
 Route::apiResource('atendimentos', AtendimentoController::class);
+Route::apiResource('notas', NotaController::class);
